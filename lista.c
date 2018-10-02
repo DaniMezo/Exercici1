@@ -6,7 +6,6 @@
 
 listaBID listabidCreate(){
     Lista l;
-
     l.first = (Node *) malloc (sizeof(Node)); //Asignacion de memoria
     if(l.first == NULL)
     {
@@ -27,7 +26,7 @@ listaBID listabidCreate(){
     }
     return l;
 }
-void listabidIntroduceDelante(listaBID *lista, elemento e)
+void listabidIntroduceDelante(listaBID *lista, Element e)
 {
     Node *aux;
     aux = (Node *) malloc (sizeof(Node));
@@ -42,10 +41,31 @@ void listabidIntroduceDelante(listaBID *lista, elemento e)
         l->pdi->anterior= aux;
     }
 }
-void listabidIntroduceDetras(listaBID *lista, elemento e){
-
+void listabidIntroduceDetras(listaBID *lista, Element e){
+    Node *aux;
+    aux = (Node *) malloc (sizeof(Node));
+    if(aux==NULL)
+    {
+        printf("Error al insertar\n");
+    }else{
+        aux->anterior=l->pdi;
+        aux->e=e;
+        aux->seguent=l.>pdi->seguent;
+        aux->seguent->anterior=aux;
+        l->pdi->seguent= aux;
+    }
 }
-element listabidConsulta(listaBID lista);
+Element listabidConsulta(listaBID lista){
+    Element e;
+    Element e = ELEMENT_indefinit();
+
+    if (l.pdi==l->first || l.pdi==l->last) {
+        printf("No se puede consultar\n");
+    }else{
+        e = l.pdi->e;
+    }
+    return e;
+}
 void listabidBorrar(listaBID *lista){
     Node *aux;
     if(l->pdi==l->first || l->pdi == l->last)
@@ -58,10 +78,45 @@ void listabidBorrar(listaBID *lista){
         free(aux);
     }
 }
-void listabidAvanza(listaBID *lista){}
-void listabidRetrocede(listaBID *lista){}
-int listabidFinal(listaBID lista){}
-int listabidInicio(listaBID lista){}
-void llistabidGoFirst(listaBID *lista){}
-int listabidBacia(listaBID lista){}
-void listabidDestruye(listaBID *lista){}
+void listabidAvanza(listaBID *lista){
+    if(l->pdi->seguent!=NULL)
+    {
+        l->pdi=l->pdi->seguent;
+    }else{
+        printf("Error\n");
+    }
+}
+void listabidRetrocede(listaBID *lista){
+    if(l->pdi==l->first)
+    {
+        printf("Error\n");
+    }else{
+        l->pdi=l->pdi->anterior;
+    }
+}
+int listabidFinal(listaBID lista){
+    return l.pdi==l.last;
+}
+int listabidInicio(listaBID lista){
+    return l.pdi==l.first;
+}
+void listabidGoFirst(listaBID *lista){
+    l->pdi=l->first->seguent;
+}
+void listabidGoLast(listaBID *lista){
+    l->pdi=l->last->anterior;
+}
+int listabidBacia(listaBID lista){
+    return l.first->seguent==l.last;
+}
+void listabidDestruye(listaBID *lista){
+    Node *aux;
+    aux=l->first;
+    while(l->first != NULL){
+        aux = l->first;
+        l->first = l->first->next;
+        free(aux);
+    }
+    l->last = NULL;
+    l->pdi->NULL;
+}

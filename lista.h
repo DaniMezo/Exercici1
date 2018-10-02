@@ -5,7 +5,7 @@
 #ifndef EJERCICIO1_LISTA_H
 #define EJERCICIO1_LISTA_H
 typedef struct n{
-    element e;
+    Element e;
     struct n *anterior;
     struct n *seguent;
 }Node;
@@ -16,15 +16,16 @@ typedef struct{
 }listaBID;
 
 listaBID listabidCreate();
-void listabidIntroduceDelante(listaBID *lista, elemento e);
-void listabidIntroduceDetras(listaBID *lista, elemento e);
+void listabidIntroduceDelante(listaBID *lista, Element e);
+void listabidIntroduceDetras(listaBID *lista, Element e);
 element listabidConsulta(listaBID lista);
 void listabidBorrar(listaBID *lista);
 void listabidAvanza(listaBID *lista);//Tira una posicion hacia el final de la cola
 void listabidRetrocede(listaBID *lista);//Tira una posicion hacia adelante de la cola
 int listabidFinal(listaBID lista);
 int listabidInicio(listaBID lista);
-void llistabidGoFirst(listaBID *lista);
+void listabidGoFirst(listaBID *lista);
+void listabidGoLast(listaBID *lista);
 int listabidBacia(listaBID lista);
 void listabidDestruye(listaBID *lista);
 
