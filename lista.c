@@ -26,7 +26,31 @@ listaBID listabidCreate(){
     }
     return l;
 }
-void listabidIntroduceDelante(listaBID *lista, Element e)
+void listabidIntroduceOrdenado(listaBID *lista, Element e){
+    Node *aux;
+    int trobat=0;
+    Node *pdi;
+    aux=(Node *) malloc (sizeof(Node));
+    if(aux==NULL){
+        printf("Error al insertar\n");
+    }else{
+        aux->e=e;
+        l->pdi = l->last;
+        l->last=l->first->seguent;
+        while(!trobat && l->pdi->seguent !=NULL){
+            if(l->pdi->e <=e){
+                l->pdi = l->pdi->seguent;
+            }else{
+                trobat=1;
+                aux->anterior=l->pdi->anterior;
+                aux->anterior->seguent=aux;
+                aux->seguent=l->pdi;
+                l->pdi->anterior=aux;
+            }
+        }
+    }
+}
+/*void listabidIntroduceDelante(listaBID *lista, Element e)
 {
     Node *aux;
     aux = (Node *) malloc (sizeof(Node));
@@ -54,7 +78,7 @@ void listabidIntroduceDetras(listaBID *lista, Element e){
         aux->seguent->anterior=aux;
         l->pdi->seguent= aux;
     }
-}
+}*/
 Element listabidConsulta(listaBID lista){
     Element e;
     Element e = ELEMENT_indefinit();
