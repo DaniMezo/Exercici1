@@ -21,7 +21,33 @@ void main() {
         scanf("%d", &op);
         switch (op) {
             case 1:
-                printf("")
+                printf("Introduce el elemento:\n");
+                scanf("%d", &e);
+                listabidIntroduceOrdenado(&lista, e);
+            break;
+            case 2:
+                listabidAvanza(&lista);
+            break;
+            case 3:
+                listabidRetrocede(&lista);
+            break;
+            case 4:
+                listabidGoFirst(&lista);
+            break;
+            case 5:
+                listabidGoLast(&lista);
+            break;
+            case 6:
+                listabidConsulta(&lista);
+            break;
+            case 7
+                listabidBorrar(&lista);
+            break;
+            case 8:
+                listabidDestruye(&lista);
+            break;
+            case 9:
+            break;
         }
 
     }
