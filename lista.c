@@ -6,12 +6,13 @@
 
 ListaBid listabidCreate(){
     ListaBid l;
-    l.first = (Node *) malloc (sizeof(Node)); //Asignacion de memoria
+
+    l.first = (Node *) malloc(sizeof(Node)); //Asignacion de memoria
     if(l.first == NULL)
     {
         printf("Error al crear la llista\n");
     }else{
-        l.last=(Node *) malloc (sizeof(Node));
+        l.last=(Node *) malloc(sizeof(Node));
         if(l.last==NULL)
         {
             printf("Error al crear la llista\n");
@@ -30,25 +31,42 @@ void listabidIntroduceOrdenado(ListaBid *lista, Element e){
     Node *aux;
     int trobat=0;
     Node *pdi;
-    aux=(Node *) malloc (sizeof(Node));
+    aux=(Node *) malloc(sizeof(Node));
     if(aux==NULL){
-        printf("Error al insertar\n");
+        printf("Error al insertar l'element\n");
     }else{
         aux->e=e;
-        l->pdi = l->last;
-        l->last=l->first->seguent;
-        while(!trobat && l->pdi->seguent !=NULL){
-            if(l->pdi->e <=e){
-                l->pdi = l->pdi->seguent;
-            }else{
-                trobat=1;
-                aux->anterior=l->pdi->anterior;
-                aux->anterior->seguent=aux;
+        pdi = l->pdi;
+        l->pdi=l->first->seguent;
+        if(l->first->seguent==l->last)
+        {
+            aux->seguent=l->pdi;
+            aux->anterior=l->pdi->anterior;
+            aux->anterior->seguent=aux;
+            l->pdi->anterior=anterior;
+        }else{
+            l->pdi=l->first->seguent;
+            while(!trobat && l->pdi->seguent !=NULL){
+                if(l->pdi->e <=e){
+                    l->pdi = l->pdi->seguent;
+                }else{
+                    trobat=1;
+                    aux->anterior=l->pdi->anterior;
+                    aux->anterior->seguent=aux;
+                    aux->seguent=l->pdi;
+                    l->pdi->anterior=aux;
+                }
+            }
+            if(!trobat)
+            {
+                l->pdi=l->last;
                 aux->seguent=l->pdi;
+                aux->anterior=l->pdi->last;
+                aux->anterior->seguent=aux;
                 l->pdi->anterior=aux;
             }
+            l->pdi=pdi;
         }
-        l->pdi=pdi;
     }
 }
 /*void listabidIntroduceDelante(Lista *lista, Element e)
@@ -85,7 +103,7 @@ Element listabidConsulta(ListaBid lista){
     Element e = ELEMENT_indefinit();
 
     if (l.pdi==l->first || l.pdi==l->last) {
-        printf("No se puede consultar\n");
+        printf("No se puede consultar el elemento\n");
     }else{
         e = l.pdi->e;
     }
@@ -95,11 +113,12 @@ void listabidBorrar(ListaBid *lista){
     Node *aux;
     if(l->pdi==l->first || l->pdi == l->last)
     {
-        printf("Error al insertar\n");
+        printf("Error\n");
     }else{
         aux=l->pdi;
         l->pdi=l->pdi->seguent;
         aux->anterior->seguent=aux->seguent;
+        aux->seguent->anterior=aux->anterior;
         free(aux);
     }
 }
@@ -108,13 +127,13 @@ void listabidAvanza(ListaBid *lista){
     {
         l->pdi=l->pdi->seguent;
     }else{
-        printf("Error\n");
+        printf("Error al avanzar\n");
     }
 }
 void listabidRetrocede(ListaBid *lista){
     if(l->pdi==l->first)
     {
-        printf("Error\n");
+        printf("Error al retroceder\n");
     }else{
         l->pdi=l->pdi->anterior;
     }
