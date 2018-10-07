@@ -8,3 +8,4 @@ test: main.o lista.o
 	gcc main.o lista.o -o test
 clean:
 	rm *.o
+	rm main
