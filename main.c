@@ -10,7 +10,7 @@ void mostrarLista(ListaBid *lista)
     listabidGoFirst(&lista);
     while (!listabidFinal(&lista)!=1)
     {
-       printf("\n\t%d", listabidConsulta(lista)) ;
+        printf("\n\t%d", listabidConsulta(lista)) ;
         listabidAvanza(&lista);
     }
 }
@@ -28,8 +28,8 @@ int main(int argc, const char * argv[]) {
     ListaBid lista;
 
     lista = listabidCreate();
-    printf("Mostramos la lista\n");
     llenarLista(&lista);
+    printf("Mostramos la lista\n");
     mostrarLista(lista);
 
     return 0;

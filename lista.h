@@ -4,6 +4,7 @@
 
 #ifndef EJERCICIO1_LISTA_H
 #define EJERCICIO1_LISTA_H
+
 typedef int Element;
 typedef struct n{
     Element e;
