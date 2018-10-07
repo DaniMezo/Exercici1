@@ -69,35 +69,6 @@ void listabidIntroduceOrdenado(ListaBid *lista, Element e){
         }
     }
 }
-/*void listabidIntroduceDelante(Lista *lista, Element e)
-{
-    Node *aux;
-    aux = (Node *) malloc (sizeof(Node));
-    if(aux==NULL)
-    {
-        printf("Error al insertar\n");
-    }else{
-        aux->seguent=l->pdi;
-        aux->e=e;
-        aux->anterior=l.>pdi->anterior;
-        aux->anterior->seguent=aux;
-        l->pdi->anterior= aux;
-    }
-}
-void listabidIntroduceDetras(Lista *lista, Element e){
-    Node *aux;
-    aux = (Node *) malloc (sizeof(Node));
-    if(aux==NULL)
-    {
-        printf("Error al insertar\n");
-    }else{
-        aux->anterior=l->pdi;
-        aux->e=e;
-        aux->seguent=l.>pdi->seguent;
-        aux->seguent->anterior=aux;
-        l->pdi->seguent= aux;
-    }
-}*/
 Element listabidConsulta(ListaBid lista){
     Element e;
     Element e = ELEMENT_indefinit();

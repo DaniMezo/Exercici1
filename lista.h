@@ -18,8 +18,6 @@ typedef struct{
 
 ListaBid listabidCreate();
 void listabidIntroduceOrdenado(ListaBid *lista, Element e);
-//void listabidIntroduceDelante(ListaBid *lista, Element e);
-//void listabidIntroduceDetras(ListaBid *lista, Element e);
 Element listabidConsulta(ListaBid lista);
 void listabidBorrar(ListaBid *lista);
 void listabidAvanza(ListaBid *lista);//Tira una posicion hacia el final de la cola

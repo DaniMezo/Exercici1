@@ -1,0 +1,9 @@
+all: test
+
+main.o: main.c lista.c
+	gcc -c main.c
+test: main.o
+	gcc main.o -o test
+clean:
+	rm *.o
+	rm main
