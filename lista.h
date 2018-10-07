@@ -4,7 +4,6 @@
 
 #ifndef EJERCICIO1_LISTA_H
 #define EJERCICIO1_LISTA_H
-
 typedef int Element;
 typedef struct n{
     Element e;
@@ -16,6 +15,8 @@ typedef struct{
     Node *last;
     Node *pdi;
 }ListaBid;
+
+#define ELEMENT_indefinit -10
 
 ListaBid listabidCreate();
 void listabidIntroduceOrdenado(ListaBid *lista, Element e);
