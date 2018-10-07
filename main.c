@@ -2,34 +2,35 @@
 // Created by Daniel Mezo on 02/10/2018.
 //
 #include "lista.h"
-#include "stdlib.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-int main(int argc, const char * argv[]) {
-    Lista lista;
-
-    lista = listabidCreate(&lista);
-    printf("Mostramos la lista\n")
-    mostrarLista(&lista);
-
-    return 0;
-}
-void mostrarLista(Lista *lista)
+void mostrarLista(ListaBid *lista)
 {
-    listabidGoLast(lista);
-    while (!listabidFinal(*lista))
+    listabidGoFirst(&lista);
+    while (!listabidFinal(&lista)!=1)
     {
-        ELEMENT_debugElement(listabidConsulta(*lista));
-        listabidAvanza(*lista);
+       printf("\n\t%d", listabidConsulta(lista)) ;
+        listabidAvanza(&lista);
     }
 }
-void llenarLista(Lista *lista)
+void llenarLista(ListaBid *lista)
 {
-    Element e, e1, e2, e3,e4,e5;
     printf("Insercion de los elementos\n");
-    listabidIntroduceOrdenado(lista, e);
-    listabidIntroduceOrdenado(lista, e1);
-    listabidIntroduceOrdenado(lista, e2);
-    listabidIntroduceOrdenado(lista, e3);
-    listabidIntroduceOrdenado(lista, e4);
-    listabidIntroduceOrdenado(lista, e5);
+    listabidIntroduceOrdenado(&lista, 5);
+    listabidIntroduceOrdenado(&lista, 55);
+    listabidIntroduceOrdenado(&lista, 10);
+    listabidIntroduceOrdenado(&lista, 21);
+    listabidIntroduceOrdenado(&lista, 24);
+    listabidIntroduceOrdenado(&lista, 8);
+}
+int main(int argc, const char * argv[]) {
+    ListaBid lista;
+
+    lista = listabidCreate();
+    printf("Mostramos la lista\n");
+    llenarLista(&lista);
+    mostrarLista(lista);
+
+    return 0;
 }
